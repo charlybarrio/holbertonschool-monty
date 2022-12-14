@@ -17,6 +17,8 @@ char **split(char *str, char *delim)
 
 	free(str_dup), str_dup = NULL;
 	split_str = malloc(sizeof(char *) * len + 1);
+	if (!split_str)
+		return (NULL);
 	buf = strtok(str, delim);
 	for (index = 0; index < len; index++)
 	{
