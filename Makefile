@@ -1,5 +1,5 @@
 CC = gcc
-SRC = test-monty.c str_fun.c
+SRC = test-monty.c str_fun.c op_fun.c
 DEPS = main.h
 NAME = monty
 FILE = 00.m
