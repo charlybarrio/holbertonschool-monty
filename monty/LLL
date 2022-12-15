@@ -1,0 +1,52 @@
+nclude <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define EXIT_FAILURE 1
+
+int main(int argc, char **argv)
+{
+  // Check if the user provided a file as argument
+  if (argc != 2)
+  {
+    printf("USAGE: monty file\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Try to open the file
+  char *filename = argv[1];
+  FILE *fp = fopen(filename, "r");
+  if (!fp)
+  {
+    printf("Error: Can't open file %s\n", filename);
+    exit(EXIT_FAILURE);
+  }
+
+  // Read the file line by line
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t read;
+  int line_number = 1;
+  while ((read = getline(&line, &len, fp)) != -1)
+  {
+    // Parse the line to extract the opcode
+    char *opcode = strtok(line, " \n\t\r");
+
+    // Handle different opcodes
+    if (strcmp(opcode, "push") == 0)
+    {
+      // Parse the argument of the push opcode
+      char *arg = strtok(NULL, " \n\t\r");
+      if (!arg)
+      {
+        printf("L%d: invalid instruction\n", line_number);
+        exit(EXIT_FAILURE);
+      }
+      int value = atoi(arg);
+
+      // Push the value onto the stack
+      // ...
+    }
+    else if (strcmp(opcode, "pop") == 0)
+    {
+      // Pop a value from the
