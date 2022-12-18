@@ -1,5 +1,7 @@
-#include "main.h"
+#include "monty.h"
 
+/* GLOBAL VARIABLES */
+char *buf_tok;
 /**
  * main - main function
  * @argc: count arguments
