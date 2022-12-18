@@ -11,8 +11,11 @@ void push(stack_t **stack, unsigned int line_number)
 	int tok_int = 0;
 
 	buf_tok = strtok(NULL, DELIM);
-	if (!is_number(buf_tok))
+	if (!buf_tok)
+		goto end;
+	if (!is_number(buf_tok) && buf_tok[0] == '-')
 	{
+end:
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);
 		buf_tok = NULL;
 		return;
@@ -42,9 +45,12 @@ void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *node = NULL;
 
-	(void)line_number;
 	if (!head || !(*head))
+	{
+		dprintf(STDOUT_FILENO, "L%d: can't pop an empty stack\n", line_number);
+		buf_tok = NULL;
 		return;
+	}
 	node = *head;
 	*head = (*head)->next;
 	if (*head)
