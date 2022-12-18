@@ -7,6 +7,9 @@
 #include <unistd.h>
 #define DELIM " \t\n"
 
+/* GLOBAL VARIABLES */
+extern char *buf_tok;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -44,6 +47,10 @@ void (*get_opfun(char *buf_tok))();
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_number);
+void pint(stack_t **head, unsigned int line_number);
+void swap(stack_t **head, unsigned int line_number);
+void add(stack_t **head, unsigned int line_number);
+void nop(stack_t **head, unsigned int line_number);
 int is_number(char *s);
 size_t print_stack(stack_t *h);
 stack_t *add_tostack(stack_t **head, const int n);
