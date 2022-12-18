@@ -39,7 +39,8 @@ int main(int argc, char **argv)
 		fun = get_opfun(buf_tok); /* get the option function */
 		if (!fun) /* check function return and print error if it fails*/
 		{
-			dprintf(STDERR_FILENO, "L%d: unknown instruction\n", line_number);
+			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n",
+					line_number, buf_tok);
 			/* free all memory alocated and exit */
 			freezerr(&file_p, &stack, &line, EXIT_FAILURE);
 		}
