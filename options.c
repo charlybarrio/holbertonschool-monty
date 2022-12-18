@@ -13,7 +13,7 @@ void push(stack_t **stack, unsigned int line_number)
 	buf_tok = strtok(NULL, DELIM);
 	if (!buf_tok)
 		goto end;
-	if (!is_number(buf_tok) && buf_tok[0] == '-')
+	if (!is_number(buf_tok))
 	{
 end:
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", line_number);

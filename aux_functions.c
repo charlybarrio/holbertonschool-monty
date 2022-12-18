@@ -12,6 +12,8 @@ int is_number(char *s)
 
 	for (index = 0; s[index] != '\0'; index++)
 	{
+		if (s[0] == '-')
+			continue;
 		if (isdigit(s[index]) == 0)
 			return (0);
 	}
