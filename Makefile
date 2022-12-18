@@ -1,5 +1,5 @@
 CC = gcc
-SRC = test-monty.c get_opfun.c nodefunctions.c options.c aux_functions.c
+SRC = test-monty.c get_opfun.c nodefunctions.c options.c options2.c aux_functions.c
 DEPS = main.h
 NAME = monty
 TEST = ./test-files/
@@ -8,6 +8,7 @@ FILE2 = 00.m
 FILE3 = 000.m
 FILE4 = 0000.m
 FILE5 = 1.m
+FILE6 = 11.m
 
 CFLAGS = -Wall -Werror -Wextra -pedantic -std=gnu89 -g
 
@@ -24,6 +25,8 @@ run: $(TEST)
 	-valgrind -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST)$(FILE2) 2> $(TEST)OUT/OUT3
 	-valgrind -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST)$(FILE3) 2> $(TEST)OUT/OUT4
 	-valgrind -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST)$(FILE4) 2> $(TEST)OUT/OUT5
+	-valgrind -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST)$(FILE5) 2> $(TEST)OUT/OUT6
+	-valgrind -s --track-origins=yes --leak-check=full --show-leak-kinds=all ./$(NAME) $(TEST)$(FILE6) 2> $(TEST)OUT/OUT7
 
 .PHONY: clean
 clean: ; $(RM) ./$(NAME)
