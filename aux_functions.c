@@ -1,6 +1,23 @@
 #include "main.h"
 
 /**
+ * is_number - function that check if an string is a number
+ * @s: the string to check
+ *
+ * Return: 1 is a number, 0 is not number
+ */
+int is_number(char *s)
+{
+	int index;
+
+	for (index = 0; s[index] != '\0'; index++)
+	{
+		if (isdigit(s[index]) == 0)
+			return (0);
+	}
+	return (1);
+}
+/**
  * print_stack - Function that prints all the elements of a stack_t list.
  * @h: The linked list for print.
  *
@@ -12,7 +29,7 @@ size_t print_stack(stack_t *h)
 
 	if (h)
 	{
-		printf("%d\n", h->n);
+		dprintf(STDOUT_FILENO,"%d\n", h->n);
 		num_elem++;
 		num_elem += print_stack(h->next);
 	}
@@ -34,3 +51,5 @@ void freezerr(FILE **file_p, stack_t **stack, char **line, int status)
 	free_stack(*stack);
 	exit(status);
 }
+
+
