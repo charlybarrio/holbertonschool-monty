@@ -1,9 +1,11 @@
 #ifndef MONTY_H
-#define MONTY_h
+#define MONTY_H
+#include <string.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#define DELIM " \t\n"
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -16,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -31,13 +33,19 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* PROTOTYPES */
-char **split(char *str, char *delim);
-void (*op_fun(char **split_line))();
+void freezerr(FILE **file_p, stack_t **stack, char **line, int status);
+void free_stack(stack_t *head);
+void (*get_opfun(char *buf_tok))();
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pop(stack_t **head, unsigned int line_number);
+int is_number(char *s);
+size_t print_stack(stack_t *h);
+stack_t *add_tostack(stack_t **head, const int n);
+stack_t *makenode(int n);
 #endif
