@@ -1,16 +1,16 @@
-#include "lists.h"
+#include "main.h"
 
 /**
- * add_dnodeint - Function that adds a new node at the
- * beginning of a listint_t list.
+ * add_tostack - Function that adds a new node at the
+ * beginning of a list.
  * @head: The pointer to the list.
  * @n: Int for the new node set.
  *
  * Return: The newnode.
  */
-dlistint_t *add_dnodeint(dlistint_t **head, const int n)
+stack_t *add_tostack(stack_t **head, const int n)
 {
-	dlistint_t *newnode;
+	stack_t *newnode;
 
 	newnode = makenode(n);
 	if (!newnode)
@@ -35,11 +35,11 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
  *
  * Return: The new node.
  */
-dlistint_t *makenode(int n)
+stack_t *makenode(int n)
 {
-	dlistint_t *new = NULL;
+	stack_t *new = NULL;
 
-	new = malloc(sizeof(dlistint_t));
+	new = malloc(sizeof(stack_t));
 	if (!new)
 		return (NULL);
 
@@ -48,3 +48,17 @@ dlistint_t *makenode(int n)
 	new->prev = NULL;
 	return (new);
 }
+/**
+ * free_stack - Function that frees a list.
+ * @head: is the listint_t to free.
+ *
+ */
+void free_stack(stack_t *head)
+{
+	if (head)
+	{
+		free_stack(head->next);
+		free(head);
+	}
+}
+
