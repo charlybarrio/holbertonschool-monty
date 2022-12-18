@@ -1,9 +1,9 @@
-#MONTY
+# MONTY
 A proyect of Holberton School
--
-###Colaborators:
+
+## Colaborators:
 charlybarrio
 jgnacio
 
-###Usague:
+## Usage:
 ./monty <file>
