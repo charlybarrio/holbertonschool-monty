@@ -10,7 +10,7 @@ void add(stack_t **head, unsigned int line_number)
 	stack_t *tmp = *head;
 	int len, result;
 
-	for (len = 1; (head && (tmp)->next) && len < 2; len++)
+	for (len = 1; (tmp && (tmp)->next) && len < 2; len++)
 		tmp = tmp->next;
 	if (len < 2)
 	{
