@@ -29,7 +29,7 @@ size_t print_stack(stack_t *h)
 
 	if (h)
 	{
-		dprintf(STDOUT_FILENO,"%d\n", h->n);
+		dprintf(STDOUT_FILENO, "%d\n", h->n);
 		num_elem++;
 		num_elem += print_stack(h->next);
 	}
