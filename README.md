@@ -6,4 +6,4 @@ charlybarrio
 jgnacio
 
 ## Usage:
-./monty <file>
+./monty \<file\>
